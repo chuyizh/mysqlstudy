@@ -326,6 +326,8 @@ Department 表包含公司所有部门的信息。
 | IT         | Max      | 90000  |
 | Sales      | Henry    | 80000  |
 
+- 题解
+
 ```mysql
 select department.name as department,employee.name as employee ,employee.salary from department join employee on employee.DepartmentId=Department.id and Employee.salary>=(select max(salary) from employee where DepartmentId = department.Id)
 ```
