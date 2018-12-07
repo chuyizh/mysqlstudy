@@ -16,7 +16,7 @@
 - Teacher(TId,Tname)
 
 - TId 教师编号,Tname 教师姓名
-- 
+
 #### 4.成绩表
 
 - SC(SId,CId,score)
@@ -44,7 +44,7 @@ insert into Student values('13' , '孙七' , '2014-06-01' , '女');
 ### 科目表 Course
 
 ```mysql
-create table Course(CId varchar(10),Cname nvarchar(10),TId varchar(10));
+create table Course(CId varchar(10),Cname varchar(10),TId varchar(10));
 insert into Course values('01' , '语文' , '02');
 insert into Course values('02' , '数学' , '01');
 insert into Course values('03' , '英语' , '03');
