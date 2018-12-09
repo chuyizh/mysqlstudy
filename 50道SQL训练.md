@@ -88,6 +88,24 @@ insert into SC values('07' , '03' , 98);
 ## 练习题目
 
 1.	查询" 01 "课程比" 02 "课程成绩高的学生的信息及课程分数  
+```mysql
+select * from Student RIGHT JOIN (
+    select t1.SId, class1, class2 from
+          (select SId, score as class1 from sc where sc.CId = '01')as t1, 
+          (select SId, score as class2 from sc where sc.CId = '02')as t2
+    where t1.SId = t2.SId AND t1.class1 > t2.class2
+)r 
+on Student.SId = r.SId;
+select * from  (
+    select t1.SId, class1, class2 
+    from
+        (SELECT SId, score as class1 FROM sc WHERE sc.CId = '01') AS t1, 
+        (SELECT SId, score as class2 FROM sc WHERE sc.CId = '02') AS t2
+    where t1.SId = t2.SId and t1.class1 > t2.class2
+) r 
+LEFT JOIN Student
+ON Student.SId = r.SId;
+```
 1.1 查询同时存在" 01 "课程和" 02 "课程的情况  
 1.2 查询存在" 01 "课程但可能不存在" 02 "课程的情况(不存在时显示为 null )  
 1.3 查询不存在" 01 "课程但存在" 02 "课程的情况  
